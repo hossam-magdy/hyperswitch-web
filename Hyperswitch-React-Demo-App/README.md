@@ -35,6 +35,21 @@ SELF_SERVER_URL=http://localhost:5252                  # Your local running demo
 PROFILE_ID=""
 ```
 
+## Widgets harness
+
+The checkout page mounts the payment element only. `widgets.html` mounts any element
+`widgets.create()` accepts, one or several at a time, and tabulates every event they
+emit. It mints its own intent, so it needs no arguments:
+
+```
+http://localhost:5252/widgets.html                              # cardNumber + cardExpiry + cardCvc
+http://localhost:5252/widgets.html?element=payment              # the payment element
+http://localhost:5252/widgets.html?element=card&element=payPal  # several at once
+```
+
+Pick elements with the checkboxes, or pass `element` once per element. Override the
+keys with `?publishableKey=&clientSecret=`.
+
 ## Troubleshooting
 If your demo application is not working, you can check the following to hopefully find the issue.
 
