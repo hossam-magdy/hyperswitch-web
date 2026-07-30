@@ -50,7 +50,9 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: "http://localhost:9050",
     supportFile: "cypress/support/e2e.ts",
-    experimentalModifyObstructiveThirdPartyCode: true,
+    // Off: it rewrites `parent` to `self` in the SDK bundles, which breaks the
+    // card elements' cross-frame read of their sibling fields.
+    experimentalModifyObstructiveThirdPartyCode: false,
     defaultCommandTimeout: 10000,
     requestTimeout: 10000,
     responseTimeout: 10000,
